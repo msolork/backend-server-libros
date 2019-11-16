@@ -31,7 +31,7 @@ exports.loginController = {
             }
             let token = jsonwebtoken_1.default.sign({ usuario: usuarioDB }, config_1.default, { expiresIn: 20000 });
             usuarioDB.password = ':D';
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: true,
                 usuario: usuarioDB,
                 token

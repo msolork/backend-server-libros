@@ -11,6 +11,11 @@ export interface IUsuario extends Document{
     validatePassword(password: string): Promise<string>;
 }
 
+var rolesValidos = {
+    values: ['ADMIN_ROLE', 'USER_ROLE'],
+    message: '{VALUE} no es un rol permitido'
+};
+
 const Usuario = new Schema({
     nombre: {
         type: String,
@@ -30,7 +35,8 @@ const Usuario = new Schema({
     role: {
         type: String,
         required: true,
-        default: 'USER_ROLE'
+        default: 'USER_ROLE',
+        enum: rolesValidos
     },
     password: {
         type: String,

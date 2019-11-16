@@ -6,17 +6,17 @@ import {usuarioController} from "../controllers/usuario.controller";
 import {categoriaController} from "../controllers/categoria.controller";
 import {autorController} from "../controllers/autor.controller";
 import {libroController} from "../controllers/libro.controller";
+import {uploadController} from "../controllers/upload.controller";
+import {getImagesController} from "../controllers/getImages.controller";
 
 const router: Router = Router();
 
 router.post('/login', loginController.login);
 
 // CRUD USUARIOS
-
 router.get('/usuario/:id', usuarioController.getUser );
-
 router.get('/usuario', usuarioController.getUsers );
-router.post('/usuario', verificaToken, usuarioController.create );
+router.post('/usuario', usuarioController.create );
 router.put('/usuario/:id', verificaToken, usuarioController.update );
 router.delete('/usuario/:id', verificaToken, usuarioController.delete );
 
@@ -43,5 +43,11 @@ router.get('/libro/:id', libroController.getLibro );
 router.post('/libro', verificaToken, libroController.create );
 router.put('/libro/:id', verificaToken, libroController.update );
 router.delete('/libro/:id', verificaToken, libroController.delete );
+
+
+// AGREGAR Y OBTENER IMAGEN 
+router.put('/:tipo/:id', uploadController.tipoImg);
+router.get('/:tipo/:img', getImagesController.getImage);
+
 
 export default router;

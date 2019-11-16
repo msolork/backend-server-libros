@@ -36,7 +36,7 @@ export const loginController = {
             let token = jwt.sign({usuario: usuarioDB}, SEED, {expiresIn: 20000});
             usuarioDB.password = ':D';
 
-            return res.status(400).json({
+            return res.status(200).json({
                 ok: true,
                 usuario: usuarioDB,
                 token

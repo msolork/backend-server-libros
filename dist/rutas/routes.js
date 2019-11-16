@@ -7,12 +7,14 @@ const usuario_controller_1 = require("../controllers/usuario.controller");
 const categoria_controller_1 = require("../controllers/categoria.controller");
 const autor_controller_1 = require("../controllers/autor.controller");
 const libro_controller_1 = require("../controllers/libro.controller");
+const upload_controller_1 = require("../controllers/upload.controller");
+const getImages_controller_1 = require("../controllers/getImages.controller");
 const router = express_1.Router();
 router.post('/login', login_controller_1.loginController.login);
 // CRUD USUARIOS
 router.get('/usuario/:id', usuario_controller_1.usuarioController.getUser);
 router.get('/usuario', usuario_controller_1.usuarioController.getUsers);
-router.post('/usuario', autenticacion_1.verificaToken, usuario_controller_1.usuarioController.create);
+router.post('/usuario', usuario_controller_1.usuarioController.create);
 router.put('/usuario/:id', autenticacion_1.verificaToken, usuario_controller_1.usuarioController.update);
 router.delete('/usuario/:id', autenticacion_1.verificaToken, usuario_controller_1.usuarioController.delete);
 // CRUD CATEGORIAS
@@ -33,5 +35,8 @@ router.get('/libro/:id', libro_controller_1.libroController.getLibro);
 router.post('/libro', autenticacion_1.verificaToken, libro_controller_1.libroController.create);
 router.put('/libro/:id', autenticacion_1.verificaToken, libro_controller_1.libroController.update);
 router.delete('/libro/:id', autenticacion_1.verificaToken, libro_controller_1.libroController.delete);
+// AGREGAR Y OBTENER IMAGEN 
+router.put('/:tipo/:id', upload_controller_1.uploadController.tipoImg);
+router.get('/:tipo/:img', getImages_controller_1.getImagesController.getImage);
 exports.default = router;
 //# sourceMappingURL=routes.js.map
